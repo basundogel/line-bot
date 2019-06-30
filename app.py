@@ -39,6 +39,14 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     s = 'have you eaten yet?'
+
+    if msg == 'hi':
+        s = '哈囉'
+    elif msg == '你幾歲':
+        s = '我6歲 你幾歲'
+    if '歲' in msg:
+        s = '原來如此'
+
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=s))
