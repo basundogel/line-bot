@@ -44,7 +44,7 @@ def handle_message(event):
         s = '哈囉'
     elif msg == '你幾歲':
         s = '我6歲 你幾歲'
-    if '歲' in msg:
+    if '我' and '歲' in msg:
         s = '原來如此'
 
     line_bot_api.reply_message(
