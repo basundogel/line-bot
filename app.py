@@ -11,7 +11,8 @@ from linebot.models import (
 app = Flask(__name__)
 line_bot_api = LineBotApi('EkWWIL0CK1DOkF0QmVht754ngW4bmC+N92qEfKeB1rngGpBA+0UdFW9E86NOFZH9VLMqk/EfpBds8/0fBJecDlbFvGi4zJQAhC3UxOwBXBxi7j775Zye/t5Fq1QZq7yCkBSH0We6qbJUQKrw+VsZCgdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('b04b21306fefa94452472329612c83df')
-@app.route("/callback", methods=['POST'])
+
+@app.route("/callback", methods=['POST'])   # 接收line傳來的訊息
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
@@ -26,7 +27,7 @@ def callback():
         abort(400)
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
+@handler.add(MessageEvent, message=TextMessage) # 處理訊息
 def handle_message(event):
     msg = event.message.text
     s = '你說什麼'
